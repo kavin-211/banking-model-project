@@ -15,8 +15,8 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <!--<li><a href="Signup.html">Create Account</a></li>-->
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="Signup.html">Create Account</a></li>
             </ul>
         </nav>
     </header>
@@ -38,7 +38,7 @@
 </html>
 
 <script>
-document.getElementById("signupForm").addEventListener("submit", function(event) {
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
     const username = document.getElementById("username").value;
@@ -46,21 +46,16 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm_password").value;
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
-
-    // Check password strength
-    if (password.length < 6) {
-        alert("Password must be at least 6 characters long.");
-        return;
-    }
-
+    // Password validation
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    
     if (password !== confirmPassword) {
         alert("Passwords do not match!");
+        return;
+    }
+
+    if (!passwordRegex.test(password)) {
+        alert("Password must be at least 8 characters long, contain at least one number, and one special character.");
         return;
     }
 
@@ -70,13 +65,10 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         return;
     }
 
-    // Hash password (this is just an example, use proper secure hashing in production)
-    const hashedPassword = btoa(password);  // This is base64 encoding, not secure for real use
-
     const userData = {
         username: username,
         email: email,
-        password: hashedPassword,
+        password: password,
     };
 
     // Store the user data with the username as the key
@@ -87,5 +79,4 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
     // Redirect to banking page
     window.location.href = "banking.html";
 });
-
 </script>

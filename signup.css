@@ -14,7 +14,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color:  rgb(168, 101, 14);
+    background-color:  rgb(14, 168, 14);
     color: #fff;
 }
 
@@ -101,6 +101,6 @@ button {
 }
 
 button:hover {
-    background-color: rgb(168, 101, 14);
+    background-color: rgb(14, 168, 14);
     color: black;
 }
